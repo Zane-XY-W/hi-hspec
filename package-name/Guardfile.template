@@ -22,8 +22,7 @@ def run_tests(mod)
   execute("ghc -isrc -itest -e main #{files.join(' ')}")
 end
 
-#$$ is an escape for $ in the template
-
+#double dollar is an escape for single dollar in the template
 guard :shell do
   watch(%r{.*\.cabal$$})          { run_all_tests }
   watch(%r{src/(.+)\.hs$$})       { |m| run_tests(m[1]) }
